@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_cardHolder
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5434:5432"
+
+  adminer:
+    image: adminer
+    container_name: adminer_cardHolder
+    restart: always
+    ports:
+      - 9003:8082
+
+#  carrier:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8082:8080"
+#    networks:
+#      - bancofaria
+#    depends_on:
+#      - postgres
+#    enviroment:
+#      - POSTGRES_URL =
+#      - POSTGRES_USER = variavel1
+#      - POSTGRES_PASSWORD = variavel2
+#    container_name: api_carrier
+#    restart: always
+#    ports:
+#      - "9"
+#
+#networks:
+#  bancofaria:
+#    external: true
+#volumes:
+#  postgres-data:
+#

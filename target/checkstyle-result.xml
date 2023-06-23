@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\ApiPortadorApplication.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\applicationservice\cardholderservice\CreateCardHolderService.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\applicationservice\domain\entity\BankAccount.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\applicationservice\domain\entity\CardHolder.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\apicreditanalysis\ApiCreditAnalysis.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\apicreditanalysis\dto\Credit.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderEntityMapper.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderMapper.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderResponseMapper.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\repository\CardHolderRepository.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\repository\entity\BankAccountEntity.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\infrastructure\repository\entity\CardHolderEntity.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\controller\CardHolderController.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\controller\request\CardHolderRequest.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\controller\response\CardHolderResponse.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\ApiDownException.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\CardHolderAlreadyExistsException.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\ClientIdNotCompatibleException.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\CreditNotApprovedException.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\CreditNotFoundException.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\ControllExceptionHandler.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-portador\src\main\java\com\example\apiportador\util\StatusEnum.java">
+</file>
+</checkstyle>
