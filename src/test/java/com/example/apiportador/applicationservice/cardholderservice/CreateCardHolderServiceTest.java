@@ -1,6 +1,8 @@
 package com.example.apiportador.applicationservice.cardholderservice;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.apiportador.applicationservice.domain.entity.BankAccount;
 import com.example.apiportador.applicationservice.domain.entity.CardHolder;
@@ -22,12 +24,11 @@ import com.example.apiportador.presentation.exception.CardHolderAlreadyExistsExc
 import com.example.apiportador.presentation.exception.ClientIdNotCompatibleException;
 import com.example.apiportador.presentation.exception.CreditNotApprovedException;
 import com.example.apiportador.presentation.exception.CreditNotFoundException;
+import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
 import com.example.apiportador.util.StatusEnum;
 import feign.FeignException;
 import feign.RetryableException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -73,7 +74,7 @@ class CreateCardHolderServiceTest {
     @Captor
     private ArgumentCaptor<CardHolderEntity> cardHolderArgumentCaptor;
 
-    public static BankAccount bankAccountFactory(){
+    public static BankAccount bankAccountFactory() {
         return BankAccount.builder()
                 .account("12345678-9")
                 .agency("1234")
@@ -81,16 +82,16 @@ class CreateCardHolderServiceTest {
                 .build();
     }
 
-    public static CardHolder cardHolderFactory(){
+    public static CardHolder cardHolderFactory() {
         return CardHolder.builder()
-                .clientId("a0847eeb-9bd7-4201-be29-9b2e3967a56b")
-                .creditAnalysisId("Qualquer outro")
+                .clientId(UUID.fromString("a0847eeb-9bd7-4201-be29-9b2e3967a56b"))
+                .creditAnalysisId(UUID.fromString("bc0e54f4-b4f9-43c9-b4d8-24e4ed545a47"))
                 .bankAccount(bankAccountFactory())
                 .build();
     }
 
 
-    public static CardHolderRequest.BankAccountRequest bankAccountRequestFactory(){
+    public static CardHolderRequest.BankAccountRequest bankAccountRequestFactory() {
         return CardHolderRequest.BankAccountRequest.builder()
                 .account("12345678-9")
                 .agency("1234")
@@ -98,15 +99,15 @@ class CreateCardHolderServiceTest {
                 .build();
     }
 
-    public static CardHolderRequest cardHolderRequestFactory(){
+    public static CardHolderRequest cardHolderRequestFactory() {
         return CardHolderRequest.builder()
-                .clientId(UUID.fromString("a0847eeb-9bd7-4201-be29-9b2e3967a56b"))
-                .creditAnalysisId(UUID.randomUUID())
+                .clientId("a0847eeb-9bd7-4201-be29-9b2e3967a56b")
+                .creditAnalysisId("bc0e54f4-b4f9-43c9-b4d8-24e4ed545a47")
                 .bankAccount(bankAccountRequestFactory())
                 .build();
     }
 
-    public static BankAccountEntity bankAccountEntityFactory(){
+    public static BankAccountEntity bankAccountEntityFactory() {
         return BankAccountEntity.builder()
                 .account("12345678-9")
                 .agency("1234")
@@ -114,7 +115,7 @@ class CreateCardHolderServiceTest {
                 .build();
     }
 
-    public static CardHolderEntity cardHolderEntityFactory(){
+    public static CardHolderEntity cardHolderEntityFactory() {
         return CardHolderEntity.builder()
                 .clientId(UUID.fromString("a0847eeb-9bd7-4201-be29-9b2e3967a56b"))
                 .limit(BigDecimal.valueOf(10000.0))
@@ -124,7 +125,7 @@ class CreateCardHolderServiceTest {
     }
 
 
-    public static Credit creditFactory(){
+    public static Credit creditFactory() {
         return Credit.builder()
                 .approvedLimit(BigDecimal.valueOf(10000.0))
                 .approved(true)
@@ -135,7 +136,7 @@ class CreateCardHolderServiceTest {
 
     @Test
     @DisplayName("Quando passado o id de um client que já existe deve retornar a exceção: CardHolderAlreadyExistsException ")
-    void shoudReturnCardHolderAlreadyExistsException(){
+    void shoudReturnCardHolderAlreadyExistsException() {
         Mockito.when(cardHolderRepository.existsByClientId(uuidArgumentCaptor.capture())).thenReturn(true);
         assertThrows(CardHolderAlreadyExistsException.class, () -> cardHolderService.create(cardHolderRequestFactory()));
     }
@@ -159,11 +160,18 @@ class CreateCardHolderServiceTest {
 
     @Test
     @DisplayName("Quando crédito não esta aprovado deve retornar a exceção: CreditNotApprovedException")
-    void SholdReturnCreditNotApprovedException(){
+    void SholdReturnCreditNotApprovedException() {
         final Credit credit = creditFactory().toBuilder().approved(false).build();
         Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenReturn(credit);
 
         assertThrows(CreditNotApprovedException.class, () -> cardHolderService.create(cardHolderRequestFactory()));
+    }
+
+    @Test
+    @DisplayName("Quando algum uuid que foi passado na cardHolderRequest não respeita os padrões, deve retornar a exceção: UuidOutOfFormatException")
+    void SholdReturnUuidOutOfFormatException() {
+        assertThrows(UuidOutOfFormatException.class, () -> cardHolderService.create(cardHolderRequestFactory().toBuilder().clientId("asdyuinjfksgldhfjk2135768").build()));
+        assertThrows(UuidOutOfFormatException.class, () -> cardHolderService.create(cardHolderRequestFactory().toBuilder().creditAnalysisId("asdyuinjfksgldhfjk2135768").build()));
     }
 
     @Test
@@ -178,10 +186,12 @@ class CreateCardHolderServiceTest {
 
         assertNull(cardHolderArgumentCaptor.getValue().getBankAccount());
     }
+
     @Test
     @DisplayName("Quando apiAnalysis retorna uma analise com o id do cliente diferente do id do cliente atual deve retornar o erro: ClientIdNotCompatibleException")
-    void ShouldReturnClientIdNotCompatibleException(){
-        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenReturn(creditFactory().toBuilder().clientId(UUID.randomUUID()).build());
+    void ShouldReturnClientIdNotCompatibleException() {
+        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture()))
+                .thenReturn(creditFactory().toBuilder().clientId(UUID.randomUUID()).build());
         assertThrows(ClientIdNotCompatibleException.class, () -> cardHolderService.create(cardHolderRequestFactory()));
     }
 

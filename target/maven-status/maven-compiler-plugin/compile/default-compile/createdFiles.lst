@@ -4,7 +4,9 @@ com\example\apiportador\infrastructure\mapper\CardHolderEntityMapper.class
 com\example\apiportador\presentation\controller\CardHolderController.class
 com\example\apiportador\infrastructure\mapper\CardHolderResponseMapperImpl.class
 com\example\apiportador\infrastructure\repository\entity\BankAccountEntity.class
+com\example\apiportador\applicationservice\cardholderservice\SearchCardHolderService.class
 com\example\apiportador\ApiPortadorApplication.class
+com\example\apiportador\presentation\exception\UuidOutOfFormatException.class
 com\example\apiportador\util\StatusEnum.class
 com\example\apiportador\infrastructure\apicreditanalysis\dto\Credit.class
 com\example\apiportador\presentation\exception\CreditNotFoundException.class
@@ -20,6 +22,7 @@ com\example\apiportador\infrastructure\mapper\CardHolderResponseMapper.class
 com\example\apiportador\infrastructure\repository\entity\CardHolderEntity$CardHolderEntityBuilder.class
 com\example\apiportador\presentation\controller\request\CardHolderRequest$BankAccountRequest.class
 com\example\apiportador\presentation\exception\CreditNotApprovedException.class
+com\example\apiportador\presentation\exception\CardHolderNotFoundException.class
 com\example\apiportador\infrastructure\repository\entity\BankAccountEntity$BankAccountEntityBuilder.class
 com\example\apiportador\presentation\controller\request\CardHolderRequest$BankAccountRequest$BankAccountRequestBuilder.class
 com\example\apiportador\presentation\controller\request\CardHolderRequest.class

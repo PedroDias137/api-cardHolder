@@ -3,12 +3,13 @@ package com.example.apiportador.infrastructure.mapper;
 import com.example.apiportador.applicationservice.domain.entity.BankAccount;
 import com.example.apiportador.applicationservice.domain.entity.CardHolder;
 import com.example.apiportador.presentation.controller.request.CardHolderRequest;
+import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-23T14:14:48-0300",
+    date = "2023-06-26T11:32:52-0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 @Component
@@ -23,10 +24,10 @@ public class CardHolderMapperImpl implements CardHolderMapper {
         CardHolder.CardHolderBuilder cardHolder = CardHolder.builder();
 
         if ( cardHolderRequest.clientId() != null ) {
-            cardHolder.clientId( cardHolderRequest.clientId().toString() );
+            cardHolder.clientId( UUID.fromString( cardHolderRequest.clientId() ) );
         }
         if ( cardHolderRequest.creditAnalysisId() != null ) {
-            cardHolder.creditAnalysisId( cardHolderRequest.creditAnalysisId().toString() );
+            cardHolder.creditAnalysisId( UUID.fromString( cardHolderRequest.creditAnalysisId() ) );
         }
         cardHolder.bankAccount( from( cardHolderRequest.bankAccount() ) );
 

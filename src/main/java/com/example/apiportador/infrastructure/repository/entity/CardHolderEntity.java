@@ -30,6 +30,8 @@ public class CardHolderEntity {
     @Column(name = "limit_total")
     private BigDecimal limit;
 
+    private UUID creditAnalysisId;
+
     private UUID clientId;
 
     @CreationTimestamp
@@ -43,10 +45,12 @@ public class CardHolderEntity {
     }
 
     @Builder(toBuilder = true)
-    public CardHolderEntity(StatusEnum status, BigDecimal limit, UUID clientId, LocalDateTime createdAt, BankAccountEntity bankAccount) {
+    public CardHolderEntity(StatusEnum status, BigDecimal limit, UUID creditAnalysisId, UUID clientId, LocalDateTime createdAt,
+                            BankAccountEntity bankAccount) {
         this.cardHolderId = UUID.randomUUID();
         this.status = status;
         this.limit = limit;
+        this.creditAnalysisId = creditAnalysisId;
         this.clientId = clientId;
         this.createdAt = createdAt;
         this.bankAccount = bankAccount;
@@ -98,5 +102,13 @@ public class CardHolderEntity {
 
     public void setBankAccount(BankAccountEntity bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public UUID getCreditAnalysisId() {
+        return creditAnalysisId;
+    }
+
+    public void setCreditAnalysisId(UUID creditAnalysisId) {
+        this.creditAnalysisId = creditAnalysisId;
     }
 }

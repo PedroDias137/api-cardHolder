@@ -15,16 +15,20 @@ import com.example.apiportador.presentation.exception.CardHolderAlreadyExistsExc
 import com.example.apiportador.presentation.exception.ClientIdNotCompatibleException;
 import com.example.apiportador.presentation.exception.CreditNotApprovedException;
 import com.example.apiportador.presentation.exception.CreditNotFoundException;
+import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
 import com.example.apiportador.util.StatusEnum;
 import feign.FeignException;
 import feign.RetryableException;
 import java.util.UUID;
+import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class CreateCardHolderService {
+
+    final String uuidRegex = "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[1-5][a-fA-F0-9]{3}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$";
 
     private final ApiCreditAnalysis apiCreditAnalysis;
     private final CardHolderMapper cardHolderMapper;
@@ -35,14 +39,19 @@ public class CreateCardHolderService {
 
     @SuppressWarnings({"checkstyle:Indentation", "checkstyle:UnnecessaryParentheses"})
     public CardHolderResponse create(CardHolderRequest cardHolderRequest) throws ApiDownException {
+        final Pattern uuidPatten = Pattern.compile(uuidRegex);
 
-        if (cardHolderRepository.existsByClientId(cardHolderRequest.clientId())) {
+        if (!uuidPatten.matcher(cardHolderRequest.clientId()).matches() || !uuidPatten.matcher(cardHolderRequest.creditAnalysisId()).matches()) {
+            throw new UuidOutOfFormatException("Digite um UUID válido");
+        }
+
+        if (cardHolderRepository.existsByClientId(UUID.fromString(cardHolderRequest.clientId()))) {
             throw new CardHolderAlreadyExistsException("Card Holder já existe");
         }
 
         final Credit credit;
         try {
-            credit = apiCreditAnalysis.getAnalysiId(cardHolderRequest.creditAnalysisId());
+            credit = apiCreditAnalysis.getAnalysiId(UUID.fromString(cardHolderRequest.creditAnalysisId()));
         } catch (RetryableException e) {
             throw new ApiDownException("Api fora do ar");
         } catch (FeignException e) {
@@ -60,17 +69,15 @@ public class CreateCardHolderService {
                     .build();
         }
 
-        if (!UUID.fromString(cardHolder.clientId()).equals(credit.clientId())) {
+        if (!cardHolder.clientId().equals(credit.clientId())) {
             throw new ClientIdNotCompatibleException("O id do cliente não conincide com o id do cliente cadastrado na análise");
         }
 
-
         CardHolderEntity cardHolderEntity = cardHolderEntityMapper.from(cardHolder);
-
 
         cardHolderEntity = cardHolderEntity.toBuilder()
                 .limit(credit.approvedLimit())
-                .status(StatusEnum.ACTIVE)
+                .status(StatusEnum.INACTIVE)
                 .build();
 
         final CardHolderEntity cardHolderEntitySaved = cardHolderRepository.save(cardHolderEntity);

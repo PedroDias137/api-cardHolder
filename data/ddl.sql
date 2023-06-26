@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS CARD_HOLDER (
     id UUID PRIMARY KEY,
     STATUS VARCHAR(10),
     limit_total decimal(7,2),
+    credit_analysis_id uuid unique NULL,
     client_id uuid unique NOT NULL,
     created_at TIMESTAMP,
     bank_account_id uuid unique ,

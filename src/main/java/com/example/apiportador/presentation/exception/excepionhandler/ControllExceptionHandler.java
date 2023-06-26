@@ -2,9 +2,11 @@ package com.example.apiportador.presentation.exception.excepionhandler;
 
 import com.example.apiportador.presentation.exception.ApiDownException;
 import com.example.apiportador.presentation.exception.CardHolderAlreadyExistsException;
+import com.example.apiportador.presentation.exception.CardHolderNotFoundException;
 import com.example.apiportador.presentation.exception.ClientIdNotCompatibleException;
 import com.example.apiportador.presentation.exception.CreditNotApprovedException;
 import com.example.apiportador.presentation.exception.CreditNotFoundException;
+import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -28,6 +30,16 @@ public class ControllExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(CreditNotFoundException.class)
     public ResponseEntity<ProblemDetail> creditNotFoundExceptionHandle(final CreditNotFoundException exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problemDetail.setType(URI.create(""));
+        problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return ResponseEntity.status(NOT_FOUND).body(problemDetail);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(CardHolderNotFoundException.class)
+    public ResponseEntity<ProblemDetail> cardHolderNotFoundExceptionHandle(final CardHolderNotFoundException exception) {
         final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
         problemDetail.setType(URI.create(""));
         problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
@@ -66,13 +78,23 @@ public class ControllExceptionHandler {
     }
 
 
-    @ResponseStatus(HttpStatus.CONFLICT)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ExceptionHandler(CardHolderAlreadyExistsException.class)
     public ResponseEntity<ProblemDetail> cardHolderAlreadyExistsExceptionHandle(final CardHolderAlreadyExistsException exception) {
-        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.CONFLICT);
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         problemDetail.setType(URI.create(""));
         problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
         problemDetail.setDetail(exception.getMessage());
-        return ResponseEntity.status(CONFLICT).body(problemDetail);
+        return ResponseEntity.unprocessableEntity().body(problemDetail);
+    }
+
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ExceptionHandler(UuidOutOfFormatException.class)
+    public ResponseEntity<ProblemDetail> uuidOutOfFormatExceptionHandle(final UuidOutOfFormatException exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
+        problemDetail.setType(URI.create(""));
+        problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return ResponseEntity.unprocessableEntity().body(problemDetail);
     }
 }

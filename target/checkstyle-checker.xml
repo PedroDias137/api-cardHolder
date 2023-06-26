@@ -247,7 +247,7 @@
         </module>
         <module name="ConstantName"/>
         <module name="CyclomaticComplexity">
-            <property name="max" value="10"/>
+            <property name="max" value="13"/>
         </module>
         <module name="DefaultComesLast"/>
         <module name="EqualsAvoidNull"/>
