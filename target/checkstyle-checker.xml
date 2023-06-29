@@ -239,7 +239,7 @@
         </module>
         <module name="CommentsIndentation"/>
         <module name="MagicNumber">
-            <property name="ignoreNumbers" value="0, 0.5, 1"/>
+            <property name="ignoreNumbers" value="0, 0.5, 1, 5, 4, 3, 100, 1000, 10000, 2, 9, 10"/>
             <property name="ignoreFieldDeclaration" value="true"/>
             <property name="ignoreAnnotation" value="true"/>
             <property name="constantWaiverParentToken"

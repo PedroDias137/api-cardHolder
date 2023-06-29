@@ -18,7 +18,6 @@ import com.example.apiportador.presentation.exception.CreditNotFoundException;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
 import com.example.apiportador.util.StatusEnum;
 import feign.FeignException;
-import feign.RetryableException;
 import java.util.UUID;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
@@ -52,9 +51,9 @@ public class CreateCardHolderService {
         final Credit credit;
         try {
             credit = apiCreditAnalysis.getAnalysiId(UUID.fromString(cardHolderRequest.creditAnalysisId()));
-        } catch (RetryableException e) {
+        } catch (FeignException.InternalServerError e) {
             throw new ApiDownException("Api fora do ar");
-        } catch (FeignException e) {
+        } catch (FeignException.NotFound e) {
             throw new CreditNotFoundException("Análise não encontrada");
         }
 
@@ -77,7 +76,7 @@ public class CreateCardHolderService {
 
         cardHolderEntity = cardHolderEntity.toBuilder()
                 .limit(credit.approvedLimit())
-                .status(StatusEnum.INACTIVE)
+                .status(StatusEnum.ACTIVE)
                 .build();
 
         final CardHolderEntity cardHolderEntitySaved = cardHolderRepository.save(cardHolderEntity);

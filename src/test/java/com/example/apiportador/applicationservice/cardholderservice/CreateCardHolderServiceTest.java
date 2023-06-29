@@ -124,7 +124,6 @@ class CreateCardHolderServiceTest {
                 .build();
     }
 
-
     public static Credit creditFactory() {
         return Credit.builder()
                 .approvedLimit(BigDecimal.valueOf(10000.0))
@@ -145,7 +144,7 @@ class CreateCardHolderServiceTest {
     @DisplayName("Quando api estiver fora do ar deve retornar o erro: ApiDownException")
     void shouldReturnApiDownException() {
         final CardHolderRequest cardHolderRequest = cardHolderRequestFactory();
-        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenThrow(RetryableException.class);
+        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenThrow(FeignException.InternalServerError.class);
         assertThrows(ApiDownException.class, () -> cardHolderService.create(cardHolderRequest));
     }
 
@@ -153,7 +152,7 @@ class CreateCardHolderServiceTest {
     @DisplayName("Quando passado o id de uma análise inesistente deve retornar o erro: CreditNotFoundException")
     void shouldReturnCreditNotFoundException() {
         final CardHolderRequest cardHolderRequest = cardHolderRequestFactory();
-        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenThrow(FeignException.class);
+        Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenThrow(FeignException.NotFound.class);
         assertThrows(CreditNotFoundException.class, () -> cardHolderService.create(cardHolderRequest));
     }
 
@@ -202,7 +201,6 @@ class CreateCardHolderServiceTest {
         Mockito.when(apiCreditAnalysis.getAnalysiId(uuidArgumentCaptor.capture())).thenReturn(creditFactory());
         Mockito.when(cardHolderRepository.existsByClientId(uuidArgumentCaptor.capture())).thenReturn(false);
         Mockito.when(cardHolderRepository.save(cardHolderArgumentCaptor.capture())).thenReturn(cardHolderEntity);
-
 
         CardHolderResponse cardHolderResponse = cardHolderService.create(cardHolderRequestFactory());
 

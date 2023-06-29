@@ -6,7 +6,13 @@
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardholderservice\SearchCardHolderService.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\CreateCardService.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\SearchCardService.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\BankAccount.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\Card.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\CardHolder.java">
 </file>
@@ -14,15 +20,25 @@
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\apicreditanalysis\dto\Credit.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardEntityMapper.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderEntityMapper.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderMapper.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardHolderResponseMapper.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardMapper.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardResponseMapper.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\CardHolderRepository.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\CardRepository.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\entity\BankAccountEntity.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\entity\CardEntity.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\entity\CardHolderEntity.java">
 </file>
@@ -30,7 +46,11 @@
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\controller\request\CardHolderRequest.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\controller\request\CardRequest.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\controller\response\CardHolderResponse.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\controller\response\CardResponse.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\ApiDownException.java">
 </file>
@@ -45,6 +65,8 @@
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CreditNotFoundException.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\ControllExceptionHandler.java">
+</file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\InsufficientLimitException.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\UuidOutOfFormatException.java">
 </file>

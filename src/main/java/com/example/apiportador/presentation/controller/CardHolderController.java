@@ -3,8 +3,12 @@ package com.example.apiportador.presentation.controller;
 
 import com.example.apiportador.applicationservice.cardholderservice.CreateCardHolderService;
 import com.example.apiportador.applicationservice.cardholderservice.SearchCardHolderService;
+import com.example.apiportador.applicationservice.cardservice.CreateCardService;
+import com.example.apiportador.applicationservice.cardservice.SearchCardService;
 import com.example.apiportador.presentation.controller.request.CardHolderRequest;
+import com.example.apiportador.presentation.controller.request.CardRequest;
 import com.example.apiportador.presentation.controller.response.CardHolderResponse;
+import com.example.apiportador.presentation.controller.response.CardResponse;
 import com.example.apiportador.presentation.exception.ApiDownException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CardHolderController {
 
+
     private final CreateCardHolderService createCardHolderService;
     private final SearchCardHolderService searchCardHolderService;
+    private final CreateCardService createCardService;
+    private final SearchCardService searchCardService;
 
     @PostMapping
     public ResponseEntity<CardHolderResponse> create(@RequestBody CardHolderRequest cardHolderRequest) throws ApiDownException {
@@ -38,6 +45,12 @@ public class CardHolderController {
     @GetMapping("{id}")
     public ResponseEntity<CardHolderResponse> findById(@PathVariable String id) {
         return ResponseEntity.ok(searchCardHolderService.findById(id));
+    }
+
+    @PostMapping("{cardHolderId}/cards")
+    public ResponseEntity<CardResponse> createCard(@PathVariable String cardHolderId, @RequestBody CardRequest cardRequest) {
+
+        return ResponseEntity.created(null).body(createCardService.create(cardHolderId, cardRequest));
     }
 
 }

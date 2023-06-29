@@ -6,6 +6,7 @@ import com.example.apiportador.presentation.exception.CardHolderNotFoundExceptio
 import com.example.apiportador.presentation.exception.ClientIdNotCompatibleException;
 import com.example.apiportador.presentation.exception.CreditNotApprovedException;
 import com.example.apiportador.presentation.exception.CreditNotFoundException;
+import com.example.apiportador.presentation.exception.InsufficientLimitException;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
 import java.net.URI;
 import java.time.Instant;
@@ -91,6 +92,16 @@ public class ControllExceptionHandler {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ExceptionHandler(UuidOutOfFormatException.class)
     public ResponseEntity<ProblemDetail> uuidOutOfFormatExceptionHandle(final UuidOutOfFormatException exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
+        problemDetail.setType(URI.create(""));
+        problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return ResponseEntity.unprocessableEntity().body(problemDetail);
+    }
+
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ExceptionHandler(InsufficientLimitException.class)
+    public ResponseEntity<ProblemDetail> insufficientLimitExceptionHandle(final InsufficientLimitException exception) {
         final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         problemDetail.setType(URI.create(""));
         problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());

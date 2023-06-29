@@ -30,6 +30,8 @@ public class CardHolderEntity {
     @Column(name = "limit_total")
     private BigDecimal limit;
 
+    private BigDecimal availableLimit;
+
     private UUID creditAnalysisId;
 
     private UUID clientId;
@@ -50,6 +52,7 @@ public class CardHolderEntity {
         this.cardHolderId = UUID.randomUUID();
         this.status = status;
         this.limit = limit;
+        this.availableLimit = limit;
         this.creditAnalysisId = creditAnalysisId;
         this.clientId = clientId;
         this.createdAt = createdAt;
@@ -78,6 +81,14 @@ public class CardHolderEntity {
 
     public void setLimit(BigDecimal limit) {
         this.limit = limit;
+    }
+
+    public BigDecimal getAvailableLimit() {
+        return availableLimit;
+    }
+
+    public void setAvailableLimit(BigDecimal availableLimit) {
+        this.availableLimit = availableLimit;
     }
 
     public UUID getClientId() {
