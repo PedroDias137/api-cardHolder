@@ -53,4 +53,11 @@ public class CardHolderController {
         return ResponseEntity.created(null).body(createCardService.create(cardHolderId, cardRequest));
     }
 
+    @GetMapping("{cardHolderId}/cards")
+    public ResponseEntity<List<CardResponse>> find(@PathVariable String cardHolderId, @RequestBody CardRequest cardRequest) {
+
+        final List<CardResponse> cardResponses = searchCardService.findAll(cardHolderId);
+
+        return cardResponses.isEmpty() ? ResponseEntity.status(204).body(cardResponses) : ResponseEntity.ok(cardResponses);
+    }
 }

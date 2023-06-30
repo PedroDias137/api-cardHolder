@@ -1,3 +1,4 @@
-com\example\apiportador\applicationservice\cardholderservice\SearchCardHolderServiceTest.class
 com\example\apiportador\applicationservice\cardholderservice\CreateCardHolderServiceTest.class
+com\example\apiportador\applicationservice\cardholderservice\SearchCardHolderServiceTest.class
+com\example\apiportador\applicationservice\cardservice\SearchCardServiceTest.class
 com\example\apiportador\applicationservice\cardservice\CreateCardServiceTest.class

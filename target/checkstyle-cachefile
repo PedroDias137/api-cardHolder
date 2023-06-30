@@ -1,4 +1,4 @@
-#Thu Jun 29 15:00:12 BRT 2023
+#Fri Jun 30 14:03:30 BRT 2023
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\mapper\\CardHolderResponseMapper.java=1687358778021
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\mapper\\CardResponseMapper.java=1687955738637
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\controller\\request\\CardHolderRequest.java=1687787145785
@@ -8,18 +8,18 @@ C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\A
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\controller\\response\\CardResponse.java=1687800345750
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\mapper\\CardEntityMapper.java=1687967513006
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\entity\\CardHolderEntity.java=1687965966577
-C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\controller\\CardHolderController.java=1687956255044
+C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\controller\\CardHolderController.java=1688144545044
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\exception\\CardHolderAlreadyExistsException.java=1687540237797
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\exception\\InsufficientLimitException.java=1687805437106
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\ApiPortadorApplication.java=1687355079081
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\mapper\\CardHolderEntityMapper.java=1687355458198
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\entity\\BankAccountEntity.java=1687373818323
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\apicreditanalysis\\dto\\Credit.java=1687533161013
-C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\CardRepository.java=1688044839575
+C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\CardRepository.java=1688130895603
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\presentation\\exception\\CreditNotFoundException.java=1687540251742
-C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\applicationservice\\cardservice\\SearchCardService.java=1687793450956
+C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\applicationservice\\cardservice\\SearchCardService.java=1688144545065
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\util\\StatusEnum.java=1687358950899
-configuration*?=2CFCFA81530891753B3D44C8FCF28A665C0B6358
+configuration*?=FF5FE3BE7D77478E98F2364896A786920015CD33
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\applicationservice\\cardholderservice\\CreateCardHolderService.java=1687955738655
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\CardHolderRepository.java=1687543835831
 C\:\\Users\\pedro.dias\\OneDrive\ -\ BANCO\ ARBI\ SA\\\u00C1rea\ de\ Trabalho\\API\ cadastro\\api-cardHolder\\src\\main\\java\\com\\example\\apiportador\\infrastructure\\repository\\entity\\CardEntity.java=1688044855851
