@@ -12,9 +12,11 @@ import com.example.apiportador.infrastructure.repository.entity.CardEntity;
 import com.example.apiportador.infrastructure.repository.entity.CardHolderEntity;
 import com.example.apiportador.presentation.controller.response.CardResponse;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
+import com.example.apiportador.presentation.exception.excepionhandler.CardNotFoundException;
 import com.example.apiportador.util.StatusEnum;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -89,6 +91,43 @@ class SearchCardServiceTest {
 
         assertNotNull(cardResponses);
         assertEquals(3, cardResponses.size());
+    }
+
+    @Test
+    @DisplayName("Quando algum  dos uuid que foram passados na url não respeita os padrões deve retornar a exceção: UuidOutOfFormatException")
+    void sholdReturnUuidOutOfFormatException() {
+        assertThrows(UuidOutOfFormatException.class, () -> searchCardService.findById("23fgvybuhni4k3ygt-e43rws", String.valueOf(UUID.randomUUID())));
+        assertThrows(UuidOutOfFormatException.class,
+                () -> searchCardService.findById(String.valueOf(UUID.randomUUID()), "ASNBDISD&*SDH#23453jklsndf"));
+    }
+
+    @Test
+    @DisplayName("Quando passado o id de um cartão que não existe deve retornar a exceção: CardNotFoundException")
+    void SholdReturnCardNotFoundException() {
+        Optional<CardEntity> cardEntity = Optional.empty();
+        Mockito.when(cardRepository.findById(uuidArgumentCaptor.capture())).thenReturn(cardEntity);
+        assertThrows(CardNotFoundException.class,
+                () -> searchCardService.findById(String.valueOf(UUID.randomUUID()), String.valueOf(UUID.randomUUID())));
+    }
+
+    @Test
+    @DisplayName("Quando passado o id de um cartão que não existe deve retornar a exceção: CardNotFoundException")
+    void SholdReturnUuidOutOfFormatExceptionFromFindById() {
+        Mockito.when(cardRepository.findById(uuidArgumentCaptor.capture())).thenReturn(Optional.of(cardEntityFactory()));
+        Exception e = assertThrows(UuidOutOfFormatException.class,
+                () -> searchCardService.findById(String.valueOf(UUID.randomUUID()), String.valueOf(UUID.randomUUID())));
+        assertEquals("Os ids não coincidem", e.getMessage());
+    }
+
+    @Test
+    @DisplayName("Quando todos os requisitos são respeitados, deve retornar uma CardResponse")
+    void SholdReturnCardEntity() {
+        Optional<CardEntity> cardEntityOpt = Optional.of(cardEntityFactory());
+        CardEntity cardEntity = cardEntityOpt.get();
+        Mockito.when(cardRepository.findById(uuidArgumentCaptor.capture())).thenReturn(cardEntityOpt);
+        CardResponse cardResponse = searchCardService.findById(String.valueOf(cardEntity.getCardHolderId().getCardHolderId()), String.valueOf(cardEntity.getCardId()));
+        assertNotNull(cardResponse);
+        assertEquals(CardResponse.class, cardResponse.getClass());
     }
 
 }

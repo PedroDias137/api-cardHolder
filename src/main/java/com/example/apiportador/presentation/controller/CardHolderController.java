@@ -5,6 +5,7 @@ import com.example.apiportador.applicationservice.cardholderservice.CreateCardHo
 import com.example.apiportador.applicationservice.cardholderservice.SearchCardHolderService;
 import com.example.apiportador.applicationservice.cardservice.CreateCardService;
 import com.example.apiportador.applicationservice.cardservice.SearchCardService;
+import com.example.apiportador.applicationservice.cardservice.UpdateCardService;
 import com.example.apiportador.presentation.controller.request.CardHolderRequest;
 import com.example.apiportador.presentation.controller.request.CardRequest;
 import com.example.apiportador.presentation.controller.response.CardHolderResponse;
@@ -14,6 +15,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +33,7 @@ public class CardHolderController {
     private final SearchCardHolderService searchCardHolderService;
     private final CreateCardService createCardService;
     private final SearchCardService searchCardService;
+    private final UpdateCardService updateCardService;
 
     @PostMapping
     public ResponseEntity<CardHolderResponse> create(@RequestBody CardHolderRequest cardHolderRequest) throws ApiDownException {
@@ -59,5 +62,17 @@ public class CardHolderController {
         final List<CardResponse> cardResponses = searchCardService.findAll(cardHolderId);
 
         return cardResponses.isEmpty() ? ResponseEntity.status(204).body(cardResponses) : ResponseEntity.ok(cardResponses);
+    }
+
+    @GetMapping("{cardHolderId}/cards/{cardId}")
+    public ResponseEntity<CardResponse> findById(@PathVariable String cardHolderId, @PathVariable String cardId) {
+
+        return ResponseEntity.ok(searchCardService.findById(cardHolderId, cardId));
+    }
+
+    @PatchMapping("{cardHolderId}/cards/{cardId}")
+    public ResponseEntity<CardResponse> UpdateCardLimit(@PathVariable String cardHolderId, @PathVariable String cardId, @RequestBody CardRequest cardRequest) {
+
+        return ResponseEntity.ok(updateCardService.updateCardLimit(cardHolderId, cardId, cardRequest));
     }
 }

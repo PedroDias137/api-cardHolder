@@ -14,6 +14,7 @@ com\example\apiportador\presentation\controller\response\CardHolderResponse.clas
 com\example\apiportador\presentation\exception\ApiDownException.class
 com\example\apiportador\applicationservice\domain\entity\BankAccount.class
 com\example\apiportador\infrastructure\mapper\CardHolderResponseMapper.class
+com\example\apiportador\presentation\exception\excepionhandler\CardNotFoundException.class
 com\example\apiportador\applicationservice\cardservice\CreateCardService.class
 com\example\apiportador\presentation\exception\CardHolderNotFoundException.class
 com\example\apiportador\infrastructure\repository\entity\CardEntity$CardEntityBuilder.class
