@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import lombok.Builder;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -31,6 +32,8 @@ public class CardEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "card_holder_id")
     private CardHolderEntity cardHolderId;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
 
@@ -89,27 +92,55 @@ public class CardEntity {
         return cardId;
     }
 
+    public void setCardId(UUID cardId) {
+        this.cardId = cardId;
+    }
+
     public String getCardNumber() {
         return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public int getCvv() {
         return cvv;
     }
 
+    public void setCvv(int cvv) {
+        this.cvv = cvv;
+    }
+
     public BigDecimal getLimit() {
         return limit;
+    }
+
+    public void setLimit(BigDecimal limit) {
+        this.limit = limit;
     }
 
     public LocalDate getDueDate() {
         return dueDate;
     }
 
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
     public CardHolderEntity getCardHolderId() {
         return cardHolderId;
     }
 
+    public void setCardHolderId(CardHolderEntity cardHolderId) {
+        this.cardHolderId = cardHolderId;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -1,13 +1,22 @@
 package com.example.apiportador.applicationservice.cardservice;
 
+import com.example.apiportador.applicationservice.domain.entity.Card;
 import com.example.apiportador.infrastructure.mapper.CardEntityMapper;
 import com.example.apiportador.infrastructure.mapper.CardMapper;
 import com.example.apiportador.infrastructure.mapper.CardResponseMapper;
 import com.example.apiportador.infrastructure.repository.CardHolderRepository;
 import com.example.apiportador.infrastructure.repository.CardRepository;
+import com.example.apiportador.infrastructure.repository.entity.CardEntity;
+import com.example.apiportador.infrastructure.repository.entity.CardHolderEntity;
 import com.example.apiportador.presentation.controller.request.CardRequest;
 import com.example.apiportador.presentation.controller.response.CardResponse;
+import com.example.apiportador.presentation.exception.CardHolderNotFoundException;
+import com.example.apiportador.presentation.exception.CardNotFoundException;
+import com.example.apiportador.presentation.exception.InsufficientLimitException;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
+import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,13 +35,46 @@ public class UpdateCardService {
     private final CardRepository cardRepository;
     private final CardHolderRepository cardHolderRepository;
 
-    public CardResponse updateCardLimit(String cardHolderId, String cardId, CardRequest cardRequest){
+    public CardResponse updateCardLimit(String cardHolderId, String cardId, CardRequest cardRequest) {
 
         if (!uuidPatten.matcher(cardHolderId).matches() || !uuidPatten.matcher(cardId).matches()) {
             throw new UuidOutOfFormatException("Digite um UUID válido");
         }
 
-        return null;
-    }
+        final Optional<CardHolderEntity> cardHolderOpt = cardHolderRepository.findById(UUID.fromString(cardHolderId));
+        if (cardHolderOpt.isEmpty()) {
+            throw new CardHolderNotFoundException("Card Holder não encontrado");
+        }
+        final CardHolderEntity cardHolderEntity = cardHolderOpt.get();
 
+        final Optional<CardEntity> cardOpt = cardRepository.findById(UUID.fromString(cardId));
+        if (cardOpt.isEmpty()) {
+            throw new CardNotFoundException("Card não encontrado");
+        }
+
+        final CardEntity cardEntity = cardOpt.get();
+
+        if (!cardHolderId.equals(String.valueOf(cardEntity.getCardHolderId().getCardHolderId()))) {
+            throw new UuidOutOfFormatException("Os ids não coincidem");
+        }
+
+        final Card card = cardMapper.from(cardRequest);
+
+        if (card.limit().equals(BigDecimal.valueOf(0))) {
+            throw new IllegalArgumentException("Digite um limite maior que 0");
+        }
+        final BigDecimal available = cardHolderEntity.getAvailableLimit().add(cardEntity.getLimit());
+
+        if (available.compareTo(card.limit()) < 0) {
+            throw new InsufficientLimitException("Você tem apenas R$%.2f de limite".formatted(available));
+        }
+
+        cardHolderEntity.setAvailableLimit(available.subtract(card.limit()));
+        cardEntity.setLimit(card.limit());
+        //cardEntity = cardEntity.toBuilder().limit(card.limit()).build();
+        final CardEntity cardEntitySaved = cardRepository.save(cardEntity);
+
+        return cardResponseMapper.from(cardEntitySaved);
+    }
 }
+

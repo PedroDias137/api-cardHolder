@@ -57,7 +57,7 @@ public class CardHolderController {
     }
 
     @GetMapping("{cardHolderId}/cards")
-    public ResponseEntity<List<CardResponse>> find(@PathVariable String cardHolderId, @RequestBody CardRequest cardRequest) {
+    public ResponseEntity<List<CardResponse>> find(@PathVariable String cardHolderId) {
 
         final List<CardResponse> cardResponses = searchCardService.findAll(cardHolderId);
 
@@ -71,8 +71,8 @@ public class CardHolderController {
     }
 
     @PatchMapping("{cardHolderId}/cards/{cardId}")
-    public ResponseEntity<CardResponse> UpdateCardLimit(@PathVariable String cardHolderId, @PathVariable String cardId, @RequestBody CardRequest cardRequest) {
-
+    public ResponseEntity<CardResponse> updateCardLimit(@PathVariable String cardHolderId, @PathVariable String cardId,
+                                                        @RequestBody CardRequest cardRequest) {
         return ResponseEntity.ok(updateCardService.updateCardLimit(cardHolderId, cardId, cardRequest));
     }
 }

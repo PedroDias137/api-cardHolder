@@ -16,6 +16,6 @@ public interface ApiCreditAnalysis {
     @GetMapping()
     List<Credit> getAnalysis(@RequestParam(value = "uuid", required = false) String uuid);
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     Credit getAnalysiId(@PathVariable UUID id);
 }

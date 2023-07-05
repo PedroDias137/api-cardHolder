@@ -8,8 +8,8 @@ import com.example.apiportador.infrastructure.repository.CardHolderRepository;
 import com.example.apiportador.infrastructure.repository.CardRepository;
 import com.example.apiportador.infrastructure.repository.entity.CardEntity;
 import com.example.apiportador.presentation.controller.response.CardResponse;
+import com.example.apiportador.presentation.exception.CardNotFoundException;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
-import com.example.apiportador.presentation.exception.excepionhandler.CardNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,7 +37,7 @@ public class SearchCardService {
             throw new UuidOutOfFormatException("Digite um UUID válido");
         }
 
-        final List<CardEntity> cardEntities = cardRepository.findByCardHolderId(UUID.fromString(cardHolderId));
+        final List<CardEntity> cardEntities = cardRepository.findByCardHolderId_CardHolderId(UUID.fromString(cardHolderId));
 
         final List<CardResponse> cardResponses = cardEntities.stream().map(cardResponseMapper::from).toList();
 

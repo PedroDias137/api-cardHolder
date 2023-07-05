@@ -10,6 +10,8 @@
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\SearchCardService.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\UpdateCardService.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\BankAccount.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\Card.java">
@@ -58,13 +60,13 @@
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CardHolderNotFoundException.java">
 </file>
+<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CardNotFoundException.java">
+</file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\ClientIdNotCompatibleException.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CreditNotApprovedException.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CreditNotFoundException.java">
-</file>
-<file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\CardNotFoundException.java">
 </file>
 <file name="C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\ControllExceptionHandler.java">
 </file>

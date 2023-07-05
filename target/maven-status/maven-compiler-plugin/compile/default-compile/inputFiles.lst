@@ -6,6 +6,7 @@ C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\mapper\CardMapper.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\ApiDownException.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CardHolderNotFoundException.java
+C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\CardNotFoundException.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\ApiPortadorApplication.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\domain\entity\Card.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\CardHolderRepository.java
@@ -26,7 +27,7 @@ C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\ControllExceptionHandler.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\apicreditanalysis\ApiCreditAnalysis.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\entity\CardHolderEntity.java
-C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\presentation\exception\excepionhandler\CardNotFoundException.java
+C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\UpdateCardService.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardservice\SearchCardService.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\applicationservice\cardholderservice\SearchCardHolderService.java
 C:\Users\pedro.dias\OneDrive - BANCO ARBI SA\Área de Trabalho\API cadastro\api-cardHolder\src\main\java\com\example\apiportador\infrastructure\repository\entity\CardEntity.java

@@ -12,7 +12,7 @@ import com.example.apiportador.infrastructure.repository.entity.CardEntity;
 import com.example.apiportador.infrastructure.repository.entity.CardHolderEntity;
 import com.example.apiportador.presentation.controller.response.CardResponse;
 import com.example.apiportador.presentation.exception.UuidOutOfFormatException;
-import com.example.apiportador.presentation.exception.excepionhandler.CardNotFoundException;
+import com.example.apiportador.presentation.exception.CardNotFoundException;
 import com.example.apiportador.util.StatusEnum;
 import java.math.BigDecimal;
 import java.util.List;
@@ -85,7 +85,7 @@ class SearchCardServiceTest {
     @DisplayName("Deve retornar todos os cards de um card holder")
     void SholdReturnAllCardsOfCardHolder() {
         List<CardEntity> cardEntities = List.of(cardEntityFactory(), cardEntityFactory(), cardEntityFactory());
-        Mockito.when(cardRepository.findByCardHolderId(uuidArgumentCaptor.capture())).thenReturn(cardEntities);
+        Mockito.when(cardRepository.findByCardHolderId_CardHolderId(uuidArgumentCaptor.capture())).thenReturn(cardEntities);
 
         List<CardResponse> cardResponses = searchCardService.findAll(String.valueOf(UUID.randomUUID()));
 

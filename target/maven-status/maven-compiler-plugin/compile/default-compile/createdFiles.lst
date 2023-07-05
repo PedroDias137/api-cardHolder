@@ -14,7 +14,6 @@ com\example\apiportador\presentation\controller\response\CardHolderResponse.clas
 com\example\apiportador\presentation\exception\ApiDownException.class
 com\example\apiportador\applicationservice\domain\entity\BankAccount.class
 com\example\apiportador\infrastructure\mapper\CardHolderResponseMapper.class
-com\example\apiportador\presentation\exception\excepionhandler\CardNotFoundException.class
 com\example\apiportador\applicationservice\cardservice\CreateCardService.class
 com\example\apiportador\presentation\exception\CardHolderNotFoundException.class
 com\example\apiportador\infrastructure\repository\entity\CardEntity$CardEntityBuilder.class
@@ -22,6 +21,7 @@ com\example\apiportador\presentation\controller\response\CardResponse.class
 com\example\apiportador\presentation\controller\request\CardHolderRequest.class
 com\example\apiportador\applicationservice\cardholderservice\CreateCardHolderService.class
 com\example\apiportador\presentation\exception\excepionhandler\ControllExceptionHandler.class
+com\example\apiportador\presentation\exception\CardNotFoundException.class
 com\example\apiportador\infrastructure\mapper\CardMapper.class
 com\example\apiportador\infrastructure\apicreditanalysis\dto\Credit$CreditBuilder.class
 com\example\apiportador\presentation\controller\CardHolderController.class
@@ -36,6 +36,7 @@ com\example\apiportador\infrastructure\mapper\CardMapperImpl.class
 com\example\apiportador\util\StatusEnum.class
 com\example\apiportador\presentation\exception\CreditNotFoundException.class
 com\example\apiportador\infrastructure\repository\entity\CardHolderEntity.class
+com\example\apiportador\applicationservice\cardservice\UpdateCardService.class
 com\example\apiportador\infrastructure\repository\entity\CardEntity.class
 com\example\apiportador\infrastructure\apicreditanalysis\ApiCreditAnalysis.class
 com\example\apiportador\infrastructure\mapper\CardHolderEntityMapperImpl.class

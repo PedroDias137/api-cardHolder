@@ -3,6 +3,7 @@ package com.example.apiportador.presentation.exception.excepionhandler;
 import com.example.apiportador.presentation.exception.ApiDownException;
 import com.example.apiportador.presentation.exception.CardHolderAlreadyExistsException;
 import com.example.apiportador.presentation.exception.CardHolderNotFoundException;
+import com.example.apiportador.presentation.exception.CardNotFoundException;
 import com.example.apiportador.presentation.exception.ClientIdNotCompatibleException;
 import com.example.apiportador.presentation.exception.CreditNotApprovedException;
 import com.example.apiportador.presentation.exception.CreditNotFoundException;
@@ -41,6 +42,16 @@ public class ControllExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(CardHolderNotFoundException.class)
     public ResponseEntity<ProblemDetail> cardHolderNotFoundExceptionHandle(final CardHolderNotFoundException exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problemDetail.setType(URI.create(""));
+        problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return ResponseEntity.status(NOT_FOUND).body(problemDetail);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(CardNotFoundException.class)
+    public ResponseEntity<ProblemDetail> cardNotFoundExceptionHandle(final CardNotFoundException exception) {
         final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
         problemDetail.setType(URI.create(""));
         problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());
