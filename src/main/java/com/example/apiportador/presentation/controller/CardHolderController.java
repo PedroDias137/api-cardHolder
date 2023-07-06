@@ -10,6 +10,7 @@ import com.example.apiportador.presentation.controller.request.CardHolderRequest
 import com.example.apiportador.presentation.controller.request.CardRequest;
 import com.example.apiportador.presentation.controller.response.CardHolderResponse;
 import com.example.apiportador.presentation.controller.response.CardResponse;
+import com.example.apiportador.presentation.controller.response.CardUpdateResponse;
 import com.example.apiportador.presentation.exception.ApiDownException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -71,8 +72,8 @@ public class CardHolderController {
     }
 
     @PatchMapping("{cardHolderId}/cards/{cardId}")
-    public ResponseEntity<CardResponse> updateCardLimit(@PathVariable String cardHolderId, @PathVariable String cardId,
-                                                        @RequestBody CardRequest cardRequest) {
+    public ResponseEntity<CardUpdateResponse> updateCardLimit(@PathVariable String cardHolderId, @PathVariable String cardId,
+                                                              @RequestBody CardRequest cardRequest) {
         return ResponseEntity.ok(updateCardService.updateCardLimit(cardHolderId, cardId, cardRequest));
     }
 }

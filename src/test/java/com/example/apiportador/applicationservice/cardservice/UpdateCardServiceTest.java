@@ -11,13 +11,15 @@ import com.example.apiportador.infrastructure.mapper.CardMapper;
 import com.example.apiportador.infrastructure.mapper.CardMapperImpl;
 import com.example.apiportador.infrastructure.mapper.CardResponseMapper;
 import com.example.apiportador.infrastructure.mapper.CardResponseMapperImpl;
+import com.example.apiportador.infrastructure.mapper.CardUpdateResponseMapper;
+import com.example.apiportador.infrastructure.mapper.CardUpdateResponseMapperImpl;
 import com.example.apiportador.infrastructure.repository.CardHolderRepository;
 import com.example.apiportador.infrastructure.repository.CardRepository;
 import com.example.apiportador.infrastructure.repository.entity.BankAccountEntity;
 import com.example.apiportador.infrastructure.repository.entity.CardEntity;
 import com.example.apiportador.infrastructure.repository.entity.CardHolderEntity;
 import com.example.apiportador.presentation.controller.request.CardRequest;
-import com.example.apiportador.presentation.controller.response.CardResponse;
+import com.example.apiportador.presentation.controller.response.CardUpdateResponse;
 import com.example.apiportador.presentation.exception.CardHolderNotFoundException;
 import com.example.apiportador.presentation.exception.CardNotFoundException;
 import com.example.apiportador.presentation.exception.InsufficientLimitException;
@@ -60,6 +62,8 @@ class UpdateCardServiceTest {
 
     @Spy
     private CardResponseMapper cardResponseMapper = new CardResponseMapperImpl();
+    @Spy
+    private CardUpdateResponseMapper cardUpdateResponseMapper = new CardUpdateResponseMapperImpl();
 
     @Captor
     private ArgumentCaptor<UUID> uuidArgumentCapture;
@@ -115,9 +119,7 @@ class UpdateCardServiceTest {
         Mockito.when(cardRepository.findById(uuidArgumentCapture.capture()))
                 .thenReturn(Optional.of(cardEntity.toBuilder().cardHolderId(cardHolderEntity).build()));
         Mockito.when(cardHolderRepository.findById(uuidArgumentCapture.capture())).thenReturn(Optional.of(cardHolderEntity));
-        Mockito.when(cardRepository.save(cardEntityArgumentCaptor.capture()))
-                .thenReturn(cardEntity.toBuilder().limit(BigDecimal.valueOf(5000)).build());
-        CardResponse cardResponse =
+        CardUpdateResponse cardResponse =
                 updateCardService.updateCardLimit("d91fc637-57e1-4024-a5c2-de4bf2e05e9e", String.valueOf(UUID.randomUUID()), cardRequestFactory());
         assertNotNull(cardResponse);
     }

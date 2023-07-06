@@ -4,12 +4,13 @@ import com.example.apiportador.applicationservice.domain.entity.Card;
 import com.example.apiportador.infrastructure.mapper.CardEntityMapper;
 import com.example.apiportador.infrastructure.mapper.CardMapper;
 import com.example.apiportador.infrastructure.mapper.CardResponseMapper;
+import com.example.apiportador.infrastructure.mapper.CardUpdateResponseMapper;
 import com.example.apiportador.infrastructure.repository.CardHolderRepository;
 import com.example.apiportador.infrastructure.repository.CardRepository;
 import com.example.apiportador.infrastructure.repository.entity.CardEntity;
 import com.example.apiportador.infrastructure.repository.entity.CardHolderEntity;
 import com.example.apiportador.presentation.controller.request.CardRequest;
-import com.example.apiportador.presentation.controller.response.CardResponse;
+import com.example.apiportador.presentation.controller.response.CardUpdateResponse;
 import com.example.apiportador.presentation.exception.CardHolderNotFoundException;
 import com.example.apiportador.presentation.exception.CardNotFoundException;
 import com.example.apiportador.presentation.exception.InsufficientLimitException;
@@ -35,7 +36,9 @@ public class UpdateCardService {
     private final CardRepository cardRepository;
     private final CardHolderRepository cardHolderRepository;
 
-    public CardResponse updateCardLimit(String cardHolderId, String cardId, CardRequest cardRequest) {
+    private final CardUpdateResponseMapper cardUpdateResponseMapper;
+
+    public CardUpdateResponse updateCardLimit(String cardHolderId, String cardId, CardRequest cardRequest) {
 
         if (!uuidPatten.matcher(cardHolderId).matches() || !uuidPatten.matcher(cardId).matches()) {
             throw new UuidOutOfFormatException("Digite um UUID válido");
@@ -69,12 +72,14 @@ public class UpdateCardService {
             throw new InsufficientLimitException("Você tem apenas R$%.2f de limite".formatted(available));
         }
 
-        cardHolderEntity.setAvailableLimit(available.subtract(card.limit()));
-        cardEntity.setLimit(card.limit());
-        //cardEntity = cardEntity.toBuilder().limit(card.limit()).build();
-        final CardEntity cardEntitySaved = cardRepository.save(cardEntity);
 
-        return cardResponseMapper.from(cardEntitySaved);
+        cardHolderRepository.updateAvailableLimitByCardHolderId(available.subtract(card.limit()), cardHolderEntity.getCardHolderId());
+
+        cardRepository.updateLimitByCardId(card.limit(), cardEntity.getCardId());
+
+        final Optional<CardEntity> cardEntityOptional = cardRepository.findById(cardEntity.getCardId());
+
+        return cardUpdateResponseMapper.from(cardEntityOptional.get());
     }
 }
 

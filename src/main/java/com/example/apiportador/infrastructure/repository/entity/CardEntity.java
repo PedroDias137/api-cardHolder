@@ -14,10 +14,12 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Immutable;
 
 
 @Entity
 @Table(name = "CARD")
+@Immutable
 public class CardEntity {
 
     @Id
@@ -38,12 +40,28 @@ public class CardEntity {
 
 
     @Builder(toBuilder = true)
-    public CardEntity(BigDecimal limit, LocalDate dueDate, CardHolderEntity cardHolderId) {
-        this.cardId = UUID.randomUUID();
-        this.cardNumber = generateCardNumber();
-        this.cvv = ThreadLocalRandom.current().nextInt(100, 1000);
+    public CardEntity(UUID cardId, BigDecimal limit, LocalDate dueDate, String cardNumber, Integer cvv, CardHolderEntity cardHolderId) {
+        if (cardId != null) {
+            this.cardId = cardId;
+        } else {
+            this.cardId = UUID.randomUUID();
+        }
+        if (cardNumber != null) {
+            this.cardNumber = cardNumber;
+        } else {
+            this.cardNumber = generateCardNumber();
+        }
+        if (cvv != null) {
+            this.cvv = cvv;
+        } else {
+            this.cvv = ThreadLocalRandom.current().nextInt(100, 1000);
+        }
         this.limit = limit;
-        this.dueDate = LocalDate.now().plusYears(5);
+        if (dueDate != null) {
+            this.dueDate = dueDate;
+        } else {
+            this.dueDate = LocalDate.now().plusYears(5);
+        }
         this.cardHolderId = cardHolderId;
     }
 

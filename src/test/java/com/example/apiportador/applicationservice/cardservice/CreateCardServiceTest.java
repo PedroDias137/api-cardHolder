@@ -131,18 +131,6 @@ class CreateCardServiceTest {
         assertEquals("Os ids não coincidem", e.getMessage());
     }
 
-    @Test
-    @DisplayName("Quando card holder tem 0 de limite deve retornar a exceçãao: InsufficientLimitException")
-    void shouldUuidInsufficientLimitException() {
-        Optional<CardHolderEntity> cardHolderEntityOpt = Optional.of(cardHolderEntityFactory().toBuilder().limit(BigDecimal.valueOf(0)).build());
-        Mockito.when(cardHolderRepository.findById(uuidArgumentCapture.capture())).thenReturn(cardHolderEntityOpt);
-        Exception e = assertThrows(InsufficientLimitException.class,
-                () -> createCardService.create(String.valueOf(cardHolderEntityOpt.get().getCardHolderId()), cardRequestFactory().toBuilder()
-                        .cardHolderId(String.valueOf(cardHolderEntityOpt.get().getCardHolderId()))
-                        .limit(BigDecimal.valueOf(11000))
-                        .build()));
-        assertEquals("Você não tem limite disponível", e.getMessage());
-    }
 
     @Test
     @DisplayName("Quando card holder tem limite mas é menor do que o limite requisitado deve retornar a exceçãao: InsufficientLimitException")
@@ -154,7 +142,7 @@ class CreateCardServiceTest {
                         .cardHolderId(String.valueOf(cardHolderEntityOpt.get().getCardHolderId()))
                         .limit(BigDecimal.valueOf(11000))
                         .build()));
-        assertEquals("Você tem apenas R$10000,00 de limite", e.getMessage());
+        assertEquals("Você tem R$10000,00 de limite", e.getMessage());
     }
 
     @Test

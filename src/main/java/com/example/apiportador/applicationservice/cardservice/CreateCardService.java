@@ -58,17 +58,13 @@ public class CreateCardService {
         final BigDecimal available = cardHolderEntity.getAvailableLimit();
 
 
-        if (available.equals(BigDecimal.valueOf(0))) {
-            throw new InsufficientLimitException("Você não tem limite disponível");
-        }
-
         if (available.compareTo(card.limit()) < 0) {
-            throw new InsufficientLimitException("Você tem apenas R$%.2f de limite".formatted(available));
+            throw new InsufficientLimitException("Você tem R$%.2f de limite".formatted(available));
         }
 
         cardHolderEntity.setAvailableLimit(available.subtract(card.limit()));
-        CardEntity cardEntity = cardEntityMapper.from(card);
-        cardEntity = cardEntity.toBuilder().cardHolderId(cardHolderEntity).build();
+        final CardEntity cardEntity = cardEntityMapper.from(card);
+        //cardEntity = cardEntity.toBuilder().cardHolderId(cardHolderEntity).build();
         final CardEntity cardEntitySaved = cardRepository.save(cardEntity);
         return cardResponseMapper.from(cardEntitySaved);
     }

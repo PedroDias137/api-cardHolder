@@ -15,9 +15,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Immutable;
 
 @Entity
 @Table(name = "CARD_HOLDER")
+@Immutable
 public class CardHolderEntity {
 
     @Id
@@ -47,12 +49,21 @@ public class CardHolderEntity {
     }
 
     @Builder(toBuilder = true)
-    public CardHolderEntity(StatusEnum status, BigDecimal limit, UUID creditAnalysisId, UUID clientId, LocalDateTime createdAt,
+    public CardHolderEntity(UUID cardHolderId, StatusEnum status, BigDecimal limit, BigDecimal availableLimit, UUID creditAnalysisId, UUID clientId,
+                            LocalDateTime createdAt,
                             BankAccountEntity bankAccount) {
-        this.cardHolderId = UUID.randomUUID();
+        if (cardHolderId != null) {
+            this.cardHolderId = cardHolderId;
+        } else {
+            this.cardHolderId = UUID.randomUUID();
+        }
         this.status = status;
         this.limit = limit;
-        this.availableLimit = limit;
+        if (availableLimit != null) {
+            this.availableLimit = availableLimit;
+        } else {
+            this.availableLimit = limit;
+        }
         this.creditAnalysisId = creditAnalysisId;
         this.clientId = clientId;
         this.createdAt = createdAt;
